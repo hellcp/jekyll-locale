@@ -40,8 +40,8 @@ module Jekyll
     end
 
     def data
-      locale_data[snakeified_keys(current_locale)] ||
-        locale_data[snakeified_keys(default_locale)] || {}
+      Hash(locale_data[snakeified_keys(default_locale)])
+        .merge(Hash(locale_data[snakeified_keys(current_locale)]))
     end
 
     def read
